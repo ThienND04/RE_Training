@@ -8,7 +8,7 @@
         "Who?"
       ],
       "correct": 3,
-      "explanation": "",
+      "explanation": "Chiều \"WHO\" được xem xét để xác định nguồn gốc của các yêu cầu, tập trung vào việc xác định ai là các bên liên quan, ai đưa ra yêu cầu và ai chịu trách nhiệm cho các thành phần hệ thống.",
       "priority": 10
     },
     {
@@ -20,7 +20,7 @@
         "Để đảm bảo tính khả thi của yêu cầu phần mềm"
       ],
       "correct": 3,
-      "explanation": "Chiều \"WHY\" tập trung vào các mục tiêu, lý do kinh doanh, và vấn đề cần giải quyết. Đảm bảo tính khả thi là một hoạt động liên quan đến đánh giá kỹ thuật và tài nguyên, thuộc về khía cạnh \"HOW\" hoặc quản lý dự án hơn là \"WHY\" (lý do tồn tại của yêu cầu).",
+      "explanation": "Chiều \"WHY\" tập trung vào các mục tiêu, lý do kinh doanh, và vấn đề cần giải quyết. Đảm bảo tính khả thi của yêu cầu phần mềm là một hoạt động liên quan đến đánh giá kỹ thuật và tài nguyên, thuộc về khía cạnh \"HOW\" hoặc quản lý dự án hơn là \"WHY\" (lý do tồn tại của yêu cầu).",
       "priority": 10
     },
     {
@@ -44,7 +44,7 @@
         "Xác định các mục tiêu của hệ thống cần phát triển"
       ],
       "correct": 1,
-      "explanation": "Khi xem xét chiều \"WHY\", một khi mục tiêu (goals) đã được xác định, có thể có nhiều phương án khác nhau để đạt được mục tiêu đó. Việc đánh giá và lựa chọn phương án tối ưu để đáp ứng mục tiêu là một khó khăn cốt lõi.",
+      "explanation": "Chiều \"WHAT\" trong kỹ nghệ yêu cầu hướng đến việc xác định các dịch vụ phần mềm, tức là những gì hệ thống cần làm để đáp ứng các mục tiêu đã đề ra.",
       "priority": 10
     },
     {
@@ -56,7 +56,7 @@
         "Cần đảm bảo khả năng lần vết giữa dịch vụ và mục tiêu của hệ thống"
       ],
       "correct": 3,
-      "explanation": "Khi xem xét chiều \"WHY\", một khi mục tiêu (goals) đã được xác định, có thể có nhiều phương án khác nhau để đạt được mục tiêu đó. Việc đánh giá và lựa chọn phương án tối ưu để đáp ứng mục tiêu là một khó khăn cốt lõi.",
+      "explanation": "Khi xem xét chiều \"WHAT\", một khó khăn quan trọng là cần đảm bảo khả năng lần vết (traceability) giữa các dịch vụ phần mềm được xác định và mục tiêu của hệ thống, để đảm bảo mỗi dịch vụ đều đóng góp vào việc đạt được mục tiêu.",
       "priority": 10
     },
     {
@@ -68,7 +68,7 @@
         "Xác định các dịch vụ chức năng của hệ thống mới"
       ],
       "correct": 1,
-      "explanation": "Chiều \"WHO\" trong Kỹ nghệ yêu cầu tập trung vào việc xác định các bên liên quan, tác nhân và vai trò của họ, từ đó phân công trách nhiệm cho các thành phần khác nhau (con người, hệ thống khác, hoặc hệ thống mới) để đạt được các mục tiêu của hệ thống.",
+      "explanation": "Chiều \"WHO\" trong Kỹ nghệ yêu cầu tập trung vào việc xác định các bên liên quan, tác nhân và vai trò của họ, từ đó gán trách nhiệm cho các thành phần khác nhau (con người, hệ thống khác, hoặc hệ thống mới) để đạt được các mục tiêu của hệ thống.",
       "priority": 10
     },
     {
@@ -80,7 +80,7 @@
         "Giải quyết các xung đột mục tiêu"
       ],
       "correct": 0,
-      "explanation": "Chiều \"WHO\" trong Kỹ nghệ yêu cầu tập trung vào việc xác định các bên liên quan, tác nhân và vai trò của họ, từ đó phân công trách nhiệm cho các thành phần khác nhau (con người, hệ thống khác, hoặc hệ thống mới) để đạt được các mục tiêu của hệ thống.",
+      "explanation": "Khi xem xét chiều \"WHO\", khó khăn chính là cần đánh giá các phương án khác nhau để có mức tự động hóa phù hợp, tức là quyết định công việc nào nên do con người thực hiện, công việc nào nên do phần mềm thực hiện.",
       "priority": 10
     },
     {
@@ -140,7 +140,7 @@
         "Dữ liệu phải được diễn giải chính xác."
       ],
       "correct": 3,
-      "explanation": "Một khó khăn phổ biến của kỹ thuật thu thập dữ liệu (như phân tích tài liệu, nhật ký) là các nguồn dữ liệu có thể chứa rất nhiều thông tin không liên quan, làm tăng công sức sàng lọc và phân tích để tìm ra yêu cầu thực sự.",
+      "explanation": "Một khó khăn quan trọng của việc thu thập dữ liệu là dữ liệu phải được diễn giải chính xác. Dữ liệu thô không tự nói lên ý nghĩa, cần phải có sự phân tích và hiểu biết đúng đắn để chuyển đổi thành thông tin hữu ích cho yêu cầu.",
       "priority": 10
     },
     {
@@ -188,7 +188,7 @@
         "Đánh giá"
       ],
       "correct": 3,
-      "explanation": "\"Đánh giá\" (Evaluation/Review) là một kỹ thuật kiểm tra và xác nhận yêu cầu đã được elicitation (khám phá) và đặc tả, chứ không phải là một kỹ thuật khám phá yêu cầu theo hướng \"chế tác\" (tạo ra sản phẩm mới như bản mẫu để elicit). Các kỹ thuật \"chế tác\" thường liên quan đến việc xây dựng các mô hình, kịch bản, hoặc bản mẫu.",
+      "explanation": "\"Đánh giá\" (Evaluation/Review) là một hoạt động kiểm tra và xác nhận yêu cầu đã được khám phá và đặc tả, chứ không phải là một kỹ thuật khám phá yêu cầu theo hướng \"chế tác\" (tạo ra sản phẩm mới như bản mẫu, mô phỏng để elicit yêu cầu).",
       "priority": 10
     },
     {
@@ -212,7 +212,7 @@
         "Phỏng vấn"
       ],
       "correct": 2,
-      "explanation": "\"Thu thập dữ liệu\" (Data collection) khi không liên quan đến bảng câu hỏi hoặc phỏng vấn trực tiếp (ví dụ: phân tích tài liệu, nhật ký hệ thống) thường được coi là kỹ thuật hướng tài liệu (artifact-oriented) hoặc hệ thống, ít tương tác trực tiếp với con người hơn so với các kỹ thuật như phỏng vấn, chia nhóm hay quan sát. Mặc dù \"bảng câu hỏi\" là hướng bên liên quan, nhưng việc kết hợp nó với \"thu thập dữ liệu\" làm cho nó trở thành một lựa chọn \"không thuộc về nhóm\" nếu \"thu thập dữ liệu\" được hiểu rộng hơn bao gồm các phương pháp không tương tác trực tiếp.",
+      "explanation": "\"Thu thập dữ liệu\" (Data collection) như phân tích tài liệu, nhật ký hệ thống thường được coi là kỹ thuật hướng tài liệu (artifact-oriented), ít tương tác trực tiếp với con người hơn so với các kỹ thuật như phỏng vấn, chia nhóm hay quan sát.",
       "priority": 10
     },
     {
@@ -236,7 +236,7 @@
         "Kế thừa cấu trúc và chất lượng của thông số miền trừu tượng"
       ],
       "correct": 0,
-      "explanation": "Một nhược điểm lớn của kỹ thuật bản mẫu (prototyping) là người dùng có thể nhầm lẫn bản mẫu với sản phẩm cuối cùng, dẫn đến việc đặt kỳ vọng không thực tế về chức năng hoặc thời gian hoàn thành, hoặc gây hiểu lầm về khả năng thực tế của hệ thống.",
+      "explanation": "Nhược điểm của kỹ thuật sử dụng lại tri thức là hiệu quả chỉ đạt được khi lĩnh vực trừu tượng đủ \"gần\" và đủ chính xác so với miền bài toán hiện tại. Nếu không tương đồng, việc áp dụng sẽ không hiệu quả và có thể gây sai sót.",
       "priority": 10
     },
     {
@@ -248,7 +248,7 @@
         "Dữ liệu phải được diễn giải chính xác."
       ],
       "correct": 3,
-      "explanation": "Một nhược điểm lớn của kỹ thuật bản mẫu (prototyping) là người dùng có thể nhầm lẫn bản mẫu với sản phẩm cuối cùng, dẫn đến việc đặt kỳ vọng không thực tế về chức năng hoặc thời gian hoàn thành, hoặc gây hiểu lầm về khả năng thực tế của hệ thống.",
+      "explanation": "Khó khăn chính của việc thu thập dữ liệu là dữ liệu phải được diễn giải chính xác. Dữ liệu thô cần được phân tích và hiểu đúng ngữ cảnh để chuyển thành thông tin yêu cầu có giá trị.",
       "priority": 10
     },
     {
@@ -272,7 +272,7 @@
         "Cả ba phương án trên đều không chính xác."
       ],
       "correct": 1,
-      "explanation": "Cấu trúc \"[if CurrentCondition then] always GoodCondition\" mô tả một mục tiêu cần được duy trì (Maintain) liên tục dưới một điều kiện nhất định. Nó không phải là một mục tiêu chỉ cần đạt được một lần (Achieve) hay một trạng thái cần tránh (Avoid).",
+      "explanation": "Cấu trúc \"[if CurrentCondition then] always GoodCondition\" mô tả một mục tiêu cần được duy trì (Maintain) liên tục. Từ khóa \"always\" cho thấy điều kiện tốt phải luôn được giữ vững, đây là đặc trưng của mục tiêu Maintain.",
       "priority": 10
     },
     {
@@ -285,7 +285,7 @@
         "Mong đợi (expectations)"
       ],
       "correct": 2,
-      "explanation": "2 hoac 4 dung",
+      "explanation": "Đây là thuộc tính miền (domain properties) vì nó mô tả một hành vi tự nhiên của hành khách trong thế giới thực, không phải là yêu cầu đặt ra cho hệ thống phần mềm mà là giả định về môi trường hoạt động.",
       "priority": 10
     },
     {
@@ -309,7 +309,7 @@
         "Định rõ các dịch vụ dự kiến sẽ được hệ thống cung cấp"
       ],
       "correct": 0,
-      "explanation": "Mục tiêu mềm (hay thường gọi là mục tiêu phi chức năng - non-functional goals/requirements) tập trung vào việc định rõ các thuộc tính chất lượng của hệ thống (ví dụ: hiệu năng, bảo mật, khả năng sử dụng) hoặc các hạn chế (constraints) đối với việc cung cấp hay phát triển dịch vụ, chứ không phải các chức năng cụ thể.",
+      "explanation": "Mục tiêu mềm (softgoals) diễn đạt lựa chọn mong muốn từ các cách tổ chức hành vi hệ thống khác nhau. Chúng thường liên quan đến các thuộc tính chất lượng và không có tiêu chí thỏa mãn rõ ràng như mục tiêu cứng.",
       "priority": 10
     },
     {
@@ -321,7 +321,7 @@
         "ATM là viết tắt tiếng anh của máy rút tiền tự động"
       ],
       "correct": 1,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Phát biểu \"Sau khi nhập sai mật khẩu 3 lần, thẻ ATM sẽ được thu lại\" mô tả một hành vi mong muốn của hệ thống nhằm đảm bảo an ninh, ngăn chặn truy cập trái phép. Đây là một mục tiêu an toàn cụ thể của hệ thống ATM.",
       "priority": 10
     },
     {
@@ -345,7 +345,7 @@
         "độc giả thư viện"
       ],
       "correct": 0,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Camera an ninh trong ngữ cảnh hệ thống thư viện không phải là tác tử trực tiếp tương tác với hệ thống quản lý thư viện. Nó là thiết bị độc lập, không tham gia vào các chức năng mượn/trả sách như nhân viên và độc giả.",
       "priority": 10
     },
     {
@@ -357,7 +357,7 @@
         "InstanceOf(o, Ob) nếu Ob hiện tại là một thể hiện của o."
       ],
       "correct": 3,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Phát biểu \"InstanceOf(o, Ob) nếu Ob hiện tại là một thể hiện của o\" là sai về mặt ký hiệu. Đúng phải là InstanceOf(o, Ob) nếu o là một thể hiện của Ob (đối tượng o thuộc về lớp Ob), không phải ngược lại.",
       "priority": 10
     },
     {
@@ -369,7 +369,7 @@
         "Association"
       ],
       "correct": 0,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Event (Sự kiện) không phải là một loại đối tượng khái niệm được biểu diễn trực tiếp bằng ký pháp lớp UML. Event thường được biểu diễn trong các biểu đồ hành vi như biểu đồ trạng thái hoặc biểu đồ tuần tự.",
       "priority": 10
     },
     {
@@ -381,7 +381,7 @@
         "Đối tượng phụ thuộc vào đối tượng mà nó liên kết (object dependent on objects it links)"
       ],
       "correct": 1,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Đối tượng thực thể (Entity) là đối tượng thụ động (passive), tự chủ (autonomous) về mặt tồn tại. Chúng lưu trữ dữ liệu và không tự khởi tạo hành động, chỉ phản hồi khi được tác động bởi các tác tử.",
       "priority": 10
     },
     {
@@ -393,7 +393,7 @@
         "Event"
       ],
       "correct": 1,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Service (Dịch vụ) không phải là một kiểu đối tượng khái niệm. Các kiểu đối tượng khái niệm chính bao gồm Agent (tác tử), Entity (thực thể), và Event (sự kiện). Service là kết quả của việc thao tác hóa mục tiêu.",
       "priority": 10
     },
     {
@@ -405,7 +405,7 @@
         "Xác định biên của phần mềm và môi trường"
       ],
       "correct": 3,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Mô hình đối tượng (Object Model) tập trung vào cấu trúc dữ liệu và quan hệ giữa các khái niệm. Việc xác định biên của phần mềm và môi trường thường được thực hiện qua mô hình tác tử (Agent Model) hoặc biểu đồ ngữ cảnh (Context Diagram).",
       "priority": 10
     },
     {
@@ -417,7 +417,7 @@
         "Tạo phương án giải xung đột"
       ],
       "correct": 0,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "\"Gán thứ tự các phát biểu yêu cầu theo khả năng gây xung đột\" không phải là một bước trong quy trình quản lý xung đột chuẩn. Quy trình thường bao gồm: xác định yêu cầu liên quan, phát hiện xung đột, và tạo/đánh giá phương án giải quyết.",
       "priority": 10
     },
     {
@@ -429,7 +429,7 @@
         "Trong điều kiện nào đó, các phát biểu yêu cầu không thể cùng thỏa mãn"
       ],
       "correct": 3,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Xung đột yếu (weak conflict/boundary conflict) là loại xung đột xảy ra trong điều kiện nào đó, các phát biểu yêu cầu không thể cùng thỏa mãn. Khác với xung đột mạnh (luôn xảy ra), xung đột yếu chỉ xuất hiện ở các trường hợp biên nhất định.",
       "priority": 10
     },
     {
@@ -441,7 +441,7 @@
         "Loại bỏ các yêu cầu có khả năng xung đột mạnh"
       ],
       "correct": 3,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "\"Loại bỏ các yêu cầu có khả năng xung đột mạnh\" không phải là cách giải xung đột đúng đắn. Các cách giải xung đột hợp lệ bao gồm: loại bỏ yêu cầu ưu tiên thấp, tránh điều kiện biên gây xung đột, hoặc làm yếu/điều chỉnh các phát biểu yêu cầu.",
       "priority": 10
     },
     {
@@ -454,7 +454,7 @@
         "Một phát biểu yêu cầu không khả thi về mặt kỹ thuật và mâu thuẫn với hợp đồng dự án"
       ],
       "correct": 4,
-      "explanation": "Phát biểu này mô tả một hành vi mong muốn của hệ thống nhằm mục đích đảm bảo an ninh và an toàn cho tài khoản người dùng, ngăn chặn truy cập trái phép. Đây là một mục tiêu cụ thể, thường là một quy tắc kinh doanh hoặc một yêu cầu an toàn, đóng góp vào mục tiêu lớn hơn về bảo mật của hệ thống.",
+      "explanation": "Một phát biểu yêu cầu không khả thi về mặt kỹ thuật và mâu thuẫn với hợp đồng dự án là vấn đề về tính khả thi (feasibility) và quản lý dự án, không phải là mâu thuẫn (inconsistency) giữa các phát biểu yêu cầu với nhau.",
       "priority": 10
     },
   {
@@ -467,7 +467,7 @@
       "Đánh giá các lựa chọn thay thế"
     ],
     "correct": 1,
-    "explanation": "Trong quy trình kỹ nghệ yêu cầu, 'Đánh giá yêu cầu' (Requirements Evaluation/Validation) bao gồm các hoạt động như Rà soát (Review), Phân tích rủi ro, Gán độ ưu tiên, Đánh giá phương án. 'Quản lý nhất quán' (Consistency Management) thường được coi là một quy trình song song hoặc một chủ đề riêng biệt tập trung vào việc xử lý xung đột, mặc dù nó liên quan mật thiết.",
+    "explanation": "\"Rà soát các yêu cầu theo các tiêu chí chất lượng\" thực chất là hoạt động thuộc nhóm Kiểm tra/Xác nhận yêu cầu (Verification/Validation) hơn là Đánh giá yêu cầu (Evaluation). Đánh giá yêu cầu bao gồm quản lý nhất quán, phân tích rủi ro, gán độ ưu tiên, đánh giá lựa chọn thay thế.",
     "priority": 10
   },
   {
@@ -491,7 +491,7 @@
       "Rủi ro thường cần phải được xếp hạng từ cao đến thấp"
     ],
     "correct": 3,
-    "explanation": "Rủi ro (Risk) bản chất là sự không chắc chắn (Uncertainty). Phát biểu 'Các hậu quả của rủi ro luôn luôn xảy ra' là sai, vì nếu nó luôn xảy ra, nó là một vấn đề (Issue) hoặc thực tế (Fact), không còn là rủi ro nữa.",
+    "explanation": "\"Rủi ro thường cần phải được xếp hạng từ cao đến thấp\" là phát biểu chưa chính xác vì nó không phải đặc điểm bản chất của rủi ro mà là một hoạt động quản lý. Rủi ro bản chất gắn với hậu quả không mong muốn và yếu tố không chắc chắn.",
     "priority": 10
   },
   {
@@ -503,7 +503,7 @@
       "Chi tiết hóa ma trận hiệu quả (effectiveness) của các phương án phòng ngừa"
     ],
     "correct": 0,
-    "explanation": "Trong kỹ thuật DDP, các bước chính thức bao gồm việc xây dựng cây mục tiêu, cây rủi ro, cây phòng ngừa, sau đó chi tiết hóa Ma trận Ảnh hưởng (Risk x Objectives) và Ma trận Hiệu quả (Mitigation x Risk). Lựa chọn 'Ánh xạ các rủi ro sang tập phương án phòng ngừa' thực chất là nội dung của Ma trận Hiệu quả (Effectiveness), nhưng về mặt thuật ngữ quy trình, việc 'Chi tiết hóa ma trận' là tên bước chuẩn xác hơn. Lựa chọn này có thể bị coi là không thuộc danh sách các bước chính thức do trùng lặp hoặc diễn đạt không chuẩn.",
+    "explanation": "\"Ánh xạ các rủi ro sang tập phương án phòng ngừa\" không phải là một bước riêng biệt trong DDP mà là nội dung của Ma trận Hiệu quả (Effectiveness Matrix). Các bước chính gồm: chi tiết hóa ma trận ảnh hưởng, chi tiết hóa ma trận hiệu quả, và xác định cân bằng tối ưu.",
     "priority": 10
   },
   {
@@ -515,7 +515,7 @@
       "3-4-1-2"
     ],
     "correct": 3,
-    "explanation": "Quy trình hợp lý: Đầu tiên cần xác định phạm vi liên quan (3 - Chồng chéo), từ đó mới phát hiện được mâu thuẫn (4 - Phát hiện). Sau khi có mâu thuẫn, ta đề xuất các giải pháp (1 - Tạo giải pháp), và cuối cùng là đánh giá để chọn giải pháp tốt nhất (2 - Lựa chọn). Thứ tự: 3-4-1-2.",
+    "explanation": "Quy trình đúng: (3) Xác định phạm vi yêu cầu chồng chéo → (4) Phát hiện mâu thuẫn → (1) Tạo giải pháp → (2) Đánh giá và lựa chọn. Thứ tự: 3-4-1-2.",
     "priority": 10
   },
   {
@@ -527,7 +527,7 @@
       "Quản lý rủi ro kém là nguyên nhân chính của thất bại phần mềm"
     ],
     "correct": 0,
-    "explanation": "Rủi ro về quy trình (Process risks) ảnh hưởng đến các mục tiêu phát triển (ngân sách, tiến độ...). Rủi ro về sản phẩm (Product risks) mới là loại ảnh hưởng đến mục tiêu chức năng và phi chức năng của hệ thống. Do đó, phát biểu đầu tiên gộp cả mục tiêu hệ thống vào rủi ro quy trình là không chính xác.",
+    "explanation": "Phát biểu \"Rủi ro về quy trình là các ảnh hưởng xấu đến mục tiêu chức năng và phi chức năng của hệ thống cũng như các mục tiêu phát triển khác\" là sai. Rủi ro quy trình chỉ ảnh hưởng đến mục tiêu phát triển (tiến độ, ngân sách). Rủi ro sản phẩm mới ảnh hưởng đến mục tiêu chức năng/phi chức năng.",
     "priority": 10
   },
   {
@@ -539,115 +539,7 @@
       "(Cost(r)- Exp(cr))* Exp(m)"
     ],
     "correct": 0,
-    "explanation": "Công thức đùng là (Exp(r) - Exp(r/cm)) / cost(cm). Tức là (Mức độ phơi nhiễm rủi ro ban đầu - Mức độ phơi nhiễm sau khi có biện pháp phòng ngừa) chia cho Chi phí biện pháp. Văn bản gốc bị thiếu dấu trừ nhưng đây là cấu trúc đúng nhất so với các phương án còn lại.",
-    "priority": 10
-  },
-  {
-    "question": "Biểu đồ ngữ cảnh (context diagram) thể hiện:",
-    "options": [
-      "Tất cả phương án trên đều sai",
-      "Tác tử và giao diện của chúng",
-      "Tác tử cùng khả năng, trách nhiệm của chúng",
-      "Tác tử cùng hành động của chúng"
-    ],
-    "correct": 1,
-    "explanation": "Biểu đồ ngữ cảnh (Context Diagram) tập trung thể hiện hệ thống ở trung tâm và các tác tử bên ngoài (external agents/entities) cùng các luồng dữ liệu/giao diện (interfaces) kết nối giữa chúng.",
-    "priority": 10
-  },
-  {
-    "question": "Phát biểu nào là chính xác về lợi ích của mô hình tác tử?",
-    "options": [
-      "Tất cả phương án trên",
-      "Cho phép phân tích nguy cơ bị tấn công; Là đầu vào cho thiết kế kiến trúc",
-      "Chỉ ra cách phân bố trách nhiệm trong hệ thống: Cho phép phân tích tải và phân tích nguy cơ bị tấn công",
-      "Cho phép phân tích tải, chỉ rõ phạm vi, cấu hình hệ thống: Xác định biên giữa phần mềm và môi trường: Diễn đạt kinh nghiệm gán trách nhiệm"
-    ],
-    "correct": 0,
-    "explanation": "Mô hình tác tử giúp xác định biên giới hệ thống, phân bố trách nhiệm, là cơ sở để thiết kế kiến trúc, phân tích tải (dựa trên năng lực tác tử) và phân tích bảo mật (tác nhân độc hại). Tất cả các ý liệt kê đều là lợi ích của mô hình tác tử.",
-    "priority": 10
-  },
-  {
-    "question": "Loại biểu đồ nào không dùng để biểu diễn mô hình tác tử (agent models)?",
-    "options": [
-      "dependency diagram",
-      "agent diagram",
-      "context diagram",
-      "use case diagram"
-    ],
-    "correct": 3,
-    "explanation": "Trong ngữ cảnh các mô hình hướng mục tiêu (như KAOS) hoặc phân tích hệ thống: Dependency diagram (i*), Context diagram và Agent diagram (Responsibility diagram) tập trung trực tiếp vào cấu trúc và quan hệ của tác tử. Use case diagram (UML) tập trung vào chức năng (Use Case) từ góc độ người dùng, thường được xếp vào nhóm mô hình chức năng hoặc mô hình mục tiêu/kịch bản hơn là mô hình cấu trúc tác tử thuần túy.",
-    "priority": 10
-  },
-  {
-    "question": "Phát biểu nào chưa chính xác về lý do khiến mục tiêu không hiện thực hóa được bởi tác tử?",
-    "options": [
-      "Thiếu tính điều khiển các biến trạng thái được ràng buộc trong mục tiêu",
-      "Các biến trạng thái chỉ được xác định ở trạng thái hiện thời",
-      "Thiếu tính giám sát các biến trạng thái được đánh giá trong mục tiêu",
-      "Mục tiêu là không thể thỏa được trong điều kiện nào đó"
-    ],
-    "correct": 1,
-    "explanation": "Để mục tiêu hiện thực hóa được, tác tử phải có khả năng giám sát (monitor) và điều khiển (control) các biến liên quan. Phương án 'Các biến trạng thái chỉ được xác định ở trạng thái hiện thời' là một phát biểu về tính chất của biến (hoặc một câu vô nghĩa trong ngữ cảnh này), không phải là lý do logic giải thích sự thất bại trong việc hiện thực hóa mục tiêu như các phương án còn lại.",
-    "priority": 10
-  },
-  {
-    "question": "Trường thông tin nào không được đề cập khi đặc tả các tác tử?",
-    "options": [
-      "Tác nhân (Actor)",
-      "Thực hiện (Performance)",
-      "Phân loại (Category)",
-      "Trách nhiệm (Responsibility)"
-    ],
-    "correct": 0,
-    "explanation": "Khi đặc tả một tác tử (Agent), các thông tin chính thường gồm: Tên/Loại tác nhân (Actor/Category), Phân loại (Con người, thiết bị, phần mềm...), và Trách nhiệm (Responsibility - các mục tiêu được gán). 'Thực hiện' (Performance) thường là thuộc tính của yêu cầu phi chức năng gắn với Mục tiêu, không phải là một trường thông tin cấu trúc khi định nghĩa bản thân Tác tử.",
-    "priority": 10
-  },
-  {
-    "question": "Phát biểu nào sau đây chưa chính xác?",
-    "options": [
-      "Một biến trạng thái tại một thời điểm có thể được điều khiến bởi một hoặc nhiều tác từ",
-      "Tác tử là các đối tượng chủ động",
-      "Tác tử có trách nhiệm với một mục tiêu nếu các thể hiện của nó cần điều khiển hành vi hệ thống để thỏa mãn mục tiêu",
-      "Thông tin có trong biểu đồ ngữ cảnh (context diagram) có thể được kết xuất từ biểu đồ tác từ (agent diagram)"
-    ],
-    "correct": 0,
-    "explanation": "Khi đặc tả một tác tử (Agent), các thông tin chính thường gồm: Tên/Loại tác nhân (Actor/Category), Phân loại (Con người, thiết bị, phần mềm...), và Trách nhiệm (Responsibility - các mục tiêu được gán). 'Thực hiện' (Performance) thường là thuộc tính của yêu cầu phi chức năng gắn với Mục tiêu, không phải là một trường thông tin cấu trúc khi định nghĩa bản thân Tác tử.",
-    "priority": 10
-  },
-  {
-    "question": "Đặc điểm nào không được đề cập khi mô tả các tác từ hệ thống?",
-    "options": [
-      "các thông tin môi trường (environment)",
-      "các mong ước và niềm tin (wishes & beliefs)",
-      "các trách nhiệm (responsibilities)",
-      "các phụ thuộc (dependencies)"
-    ],
-    "correct": 0,
-    "explanation": "Các 'mong ước và niềm tin' (wishes & beliefs) là đặc điểm của tác tử con người (Human Agents). Tác tử hệ thống (System Agents/Software) hoạt động dựa trên logic và quy tắc, không có mong ước hay niềm tin.",
-    "priority": 10
-  },
-  {
-    "question": "Đâu không phải là một loại tác từ (agent)?",
-    "options": [
-      "Device",
-      "Human Component",
-      "Entity",
-      "Legacy software"
-    ],
-    "correct": 2,
-    "explanation": "Trong mô hình tác tử, Agent là thực thể chủ động (Device, Human, Software). 'Entity' thường ám chỉ thực thể dữ liệu thụ động.",
-    "priority": 10
-  },
-  {
-    "question": "Biểu đồ nào mô tả giao diện tương tác giữa các tác tử?",
-    "options": [
-      "Sequence diagram",
-      "Context diagram",
-      "Agent diagram",
-      "Dependency diagram"
-    ],
-    "correct": 1,
-    "explanation": "Biểu đồ ngữ cảnh (Context diagram) thể hiện ranh giới hệ thống và các dòng dữ liệu (giao diện tương tác) giữa hệ thống và các tác tử bên ngoài.",
+    "explanation": "Công thức đúng là (Exp(r) - Exp(r/cm)) / cost(cm), tức là (Mức phơi nhiễm rủi ro ban đầu - Mức phơi nhiễm sau khi áp dụng biện pháp) chia cho Chi phí biện pháp phòng ngừa.",
     "priority": 10
   },
   {
@@ -659,7 +551,7 @@
       "Tác tử cùng hành động của chúng"
     ],
     "correct": 1,
-    "explanation": "Biểu đồ ngữ cảnh (Context diagram) thể hiện ranh giới hệ thống và các dòng dữ liệu (giao diện tương tác) giữa hệ thống và các tác tử bên ngoài.",
+    "explanation": "Biểu đồ ngữ cảnh (Context Diagram) thể hiện hệ thống ở trung tâm và các tác tử bên ngoài cùng các giao diện (interfaces) kết nối giữa hệ thống và các tác tử đó.",
     "priority": 10
   },
   {
@@ -671,7 +563,115 @@
       "Cho phép phân tích tải, chỉ rõ phạm vi, cấu hình hệ thống; Xác định biên giữa phần mềm và môi trường: Diễn đạt kinh nghiệm gán trách nhiệm"
     ],
     "correct": 0,
-    "explanation": "Biểu đồ ngữ cảnh (Context diagram) thể hiện ranh giới hệ thống và các dòng dữ liệu (giao diện tương tác) giữa hệ thống và các tác tử bên ngoài.",
+    "explanation": "Tất cả các phương án đều đúng. Mô hình tác tử giúp: xác định biên giới hệ thống, phân bố trách nhiệm, phân tích tải, phân tích bảo mật, và là đầu vào cho thiết kế kiến trúc.",
+    "priority": 10
+  },
+  {
+    "question": "Loại biểu đồ nào không dùng để biểu diễn mô hình tác tử (agent models)?",
+    "options": [
+      "dependency diagram",
+      "agent diagram",
+      "context diagram",
+      "use case diagram"
+    ],
+    "correct": 3,
+    "explanation": "Use case diagram tập trung vào chức năng (Use Case) từ góc độ người dùng, thuộc nhóm mô hình chức năng/mục tiêu. Các biểu đồ như dependency diagram, agent diagram, context diagram mới trực tiếp biểu diễn cấu trúc và quan hệ của tác tử.",
+    "priority": 10
+  },
+  {
+    "question": "Phát biểu nào chưa chính xác về lý do khiến mục tiêu không hiện thực hóa được bởi tác tử?",
+    "options": [
+      "Thiếu tính điều khiển các biến trạng thái được ràng buộc trong mục tiêu",
+      "Các biến trạng thái chỉ được xác định ở trạng thái hiện thời",
+      "Thiếu tính giám sát các biến trạng thái được đánh giá trong mục tiêu",
+      "Mục tiêu là không thể thỏa được trong điều kiện nào đó"
+    ],
+    "correct": 1,
+    "explanation": "Phát biểu này chưa chính xác. Để mục tiêu hiện thực hóa được, tác tử phải có khả năng giám sát (monitor) và điều khiển (control) các biến liên quan. Phương án 'Các biến trạng thái chỉ được xác định ở trạng thái hiện thời' không phải là lý do hợp lệ giải thích tại sao mục tiêu không hiện thực hóa được. Các lý do chính bao gồm: thiếu khả năng điều khiển, thiếu khả năng giám sát, hoặc mục tiêu không thể thỏa mãn.",
+    "priority": 10
+  },
+  {
+    "question": "Trường thông tin nào không được đề cập khi đặc tả các tác tử?",
+    "options": [
+      "Tác nhân (Actor)",
+      "Thực hiện (Performance)",
+      "Phân loại (Category)",
+      "Trách nhiệm (Responsibility)"
+    ],
+    "correct": 0,
+    "explanation": "\"Tác nhân\" (Actor) thường được dùng như một khái niệm tổng quát hoặc tên gọi khác của tác tử, không phải là một trường thông tin riêng biệt khi đặc tả. Các trường thông tin chính bao gồm: Phân loại (Category), Trách nhiệm (Responsibility), Thực hiện (Performance).",
+    "priority": 10
+  },
+  {
+    "question": "Phát biểu nào sau đây chưa chính xác?",
+    "options": [
+      "Một biến trạng thái tại một thời điểm có thể được điều khiến bởi một hoặc nhiều tác từ",
+      "Tác tử là các đối tượng chủ động",
+      "Tác tử có trách nhiệm với một mục tiêu nếu các thể hiện của nó cần điều khiển hành vi hệ thống để thỏa mãn mục tiêu",
+      "Thông tin có trong biểu đồ ngữ cảnh (context diagram) có thể được kết xuất từ biểu đồ tác từ (agent diagram)"
+    ],
+    "correct": 0,
+    "explanation": "Phát biểu \"Một biến trạng thái tại một thời điểm có thể được điều khiển bởi một hoặc nhiều tác tử\" là chưa chính xác. Theo nguyên tắc Single Writer, một biến trạng thái tại một thời điểm chỉ nên được điều khiển bởi một tác tử duy nhất để tránh xung đột.",
+    "priority": 10
+  },
+  {
+    "question": "Đặc điểm nào không được đề cập khi mô tả các tác từ hệ thống?",
+    "options": [
+      "các thông tin môi trường (environment)",
+      "các mong ước và niềm tin (wishes & beliefs)",
+      "các trách nhiệm (responsibilities)",
+      "các phụ thuộc (dependencies)"
+    ],
+    "correct": 0,
+    "explanation": "\"Các thông tin môi trường\" (environment) không phải là đặc điểm mô tả bản thân tác tử hệ thống. Tác tử hệ thống được mô tả qua: mong ước và niềm tin (cho tác tử con người), trách nhiệm, và các phụ thuộc.",
+    "priority": 10
+  },
+  {
+    "question": "Đâu không phải là một loại tác từ (agent)?",
+    "options": [
+      "Device",
+      "Human Component",
+      "Entity",
+      "Legacy software"
+    ],
+    "correct": 2,
+    "explanation": "Entity (Thực thể) không phải là một loại tác tử. Entity là đối tượng thụ động lưu trữ dữ liệu. Các loại tác tử bao gồm: Device (thiết bị), Human Component (con người), Legacy software (phần mềm kế thừa).",
+    "priority": 10
+  },
+  {
+    "question": "Biểu đồ nào mô tả giao diện tương tác giữa các tác tử?",
+    "options": [
+      "Sequence diagram",
+      "Context diagram",
+      "Agent diagram",
+      "Dependency diagram"
+    ],
+    "correct": 1,
+    "explanation": "Biểu đồ ngữ cảnh (Context diagram) mô tả giao diện tương tác giữa hệ thống và các tác tử bên ngoài, thể hiện các luồng dữ liệu và thông tin trao đổi.",
+    "priority": 10
+  },
+  {
+    "question": "Biểu đồ ngữ cảnh (context diagram) thể hiện:",
+    "options": [
+      "Tất cả phương án trên đều sai",
+      "Tác tử và giao diện của chúng",
+      "Tác từ cùng khả năng, trách nhiệm của chúng",
+      "Tác tử cùng hành động của chúng"
+    ],
+    "correct": 1,
+    "explanation": "Biểu đồ ngữ cảnh thể hiện tác tử và giao diện của chúng với hệ thống, cho thấy ranh giới hệ thống và các luồng thông tin trao đổi.",
+    "priority": 10
+  },
+  {
+    "question": "Phát biểu nào là chính xác về lợi ích của mô hình tác tử?",
+    "options": [
+      "Tất cả phương án trên",
+      "Cho phép phân tích nguy cơ bị tấn công: Là đầu vào cho thiết kế kiến trúc",
+      "Chỉ ra cách phân bố trách nhiệm trong hệ thống: Cho phép phân tích tải và phân tích nguy cơ bị tấn công",
+      "Cho phép phân tích tải, chỉ rõ phạm vi, cấu hình hệ thống; Xác định biên giữa phần mềm và môi trường: Diễn đạt kinh nghiệm gán trách nhiệm"
+    ],
+    "correct": 0,
+    "explanation": "Tất cả các phương án đều đúng. Mô hình tác tử mang lại nhiều lợi ích: phân tích tải, phân tích bảo mật, xác định biên giới hệ thống, phân bố trách nhiệm, và là đầu vào cho thiết kế kiến trúc.",
     "priority": 10
   },
   {
@@ -696,7 +696,7 @@
       "Một thao tác có thể được tham gia thao tác hóa (operationalization) nhiều mục tiêu nhưng một mục tiêu chỉ có thể được thao tác hóa (operationalization) bởi một thao tác."
     ],
     "correct": 0,
-    "explanation": "Tác tử hạt lớn (coarse-grained) có thể là một hệ thống con (phần mềm), một tổ chức (môi trường), hoặc một thực thể lai ghép. Do đó, tất cả các loại trên đều có thể là coarse-grained trước khi được phân rã chi tiết.",
+    "explanation": "Một thao tác có thể tham gia vào việc thao tác hóa nhiều mục tiêu khác nhau, và ngược lại, một mục tiêu có thể được thao tác hóa bởi nhiều thao tác phối hợp. Đây là quan hệ nhiều-nhiều.",
     "priority": 10
   },
   {
@@ -708,7 +708,7 @@
       "Tất cả các phát biểu trên đều sai"
     ],
     "correct": 3,
-    "explanation": "Tác tử hạt lớn (coarse-grained) có thể là một hệ thống con (phần mềm), một tổ chức (môi trường), hoặc một thực thể lai ghép. Do đó, tất cả các loại trên đều có thể là coarse-grained trước khi được phân rã chi tiết.",
+    "explanation": "Tất cả các phát biểu trên đều sai. Để thao tác được áp dụng, cần thỏa mãn cả DomPre (điều kiện miền) và ReqTrig hoặc ReqPre (điều kiện yêu cầu). Các mối quan hệ giữa chúng phức tạp hơn các phát biểu đã nêu.",
     "priority": 10
   },
   {
@@ -720,7 +720,7 @@
       "Tất cả các phương án trên"
     ],
     "correct": 3,
-    "explanation": "Đặc tả thao tác bao gồm chữ ký (tên, tham số), các điều kiện miền (DomPre/Post) mô tả vật lý, và tác tử (agent) thực hiện nó.",
+    "explanation": "Khi đặc tả thao tác hệ thống, cần đề cập đến: chữ ký thao tác (tên, tham số), tiền và hậu điều kiện miền (DomPre/DomPost), và chủ thể thực hiện thao tác (agent). Do đó, tất cả các phương án đều đúng.",
     "priority": 10
   },
   {
@@ -733,7 +733,7 @@
       "ReqPre"
     ],
     "correct": 2,
-    "explanation": "ReqPost (Required Post-condition) là điều kiện bắt buộc trên trạng thái đầu ra của thao tác để đảm bảo mục tiêu được thỏa mãn.",
+    "explanation": "ReqPost (Required Post-condition) là điều kiện bắt buộc trên trạng thái đầu ra của thao tác để đảm bảo mục tiêu được thỏa mãn sau khi thao tác hoàn thành.",
     "priority": 10
   },
   {
@@ -743,7 +743,7 @@
       "Đúng"
     ],
     "correct": 1,
-    "explanation": "Sai. Trong ngữ cảnh này, các điều kiện thuộc miền bài toán (Domain - DomPre/DomPost) thường mang tính mô tả (descriptive/indicative), trong khi các điều kiện yêu cầu (Requirement - ReqPre/ReqPost) mang tính quy định (prescriptive/optative) để đạt được mục tiêu.",
+    "explanation": "Phát biểu này Đúng. ReqPre và ReqPost là các điều kiện cần thiết cho trạng thái đầu vào và đầu ra của thao tác để đảm bảo mục tiêu được thỏa mãn. Chúng mang tính mô tả (descriptive) về điều kiện cần có.",
     "priority": 10
   },
   {
@@ -755,7 +755,7 @@
       "Là tập các chuyến trạng thái từ trạng thái nguồn sang đích"
     ],
     "correct": 2,
-    "explanation": "Về mặt toán học trong mô hình hóa hệ thống, một thao tác thường được định nghĩa là một quan hệ trên các trạng thái, tức là tập hợp các cặp (trạng thái vào, trạng thái ra).",
+    "explanation": "Thao tác hệ thống được định nghĩa là tập các cặp trạng thái vào và trạng thái ra (input/output states), mô tả sự chuyển đổi từ trạng thái này sang trạng thái khác.",
     "priority": 10
   },
   {
@@ -767,7 +767,7 @@
       "All three options above"
     ],
     "correct": 0,
-    "explanation": "ReqTrig (Required Trigger) là điều kiện kích hoạt, yêu cầu thao tác phải được thực hiện ngay lập tức khi điều kiện này thỏa mãn (miễn là DomPre cũng thỏa mãn).",
+    "explanation": "ReqTrig (Required Trigger) là điều kiện kích hoạt, yêu cầu thao tác phải được thực hiện ngay lập tức khi điều kiện này thỏa mãn (với điều kiện DomPre cũng được thỏa mãn).",
     "priority": 10
   },
   {
@@ -779,7 +779,7 @@
       "Là điều kiện cần thiết cho các trạng thái đầu ra của thao tác (operation) khi thao tác được áp dụng để thỏa mãn mục tiêu (goal)"
     ],
     "correct": 0,
-    "explanation": "DomPre (Domain Pre-condition) mô tả các điều kiện vật lý/miền của trạng thái đầu vào để thao tác có thể xảy ra. Lựa chọn 2 là định nghĩa của ReqPre.",
+    "explanation": "DomPre (Domain Pre-condition) là một phần mô tả lớp các trạng thái đầu vào khi thao tác được áp dụng. Nó mô tả các điều kiện vật lý/miền cần có để thao tác có thể xảy ra.",
     "priority": 10
   },
   {
@@ -792,7 +792,7 @@
       "Biểu đồ hoạt động hóa (operationalization diagram) và biểu đồ tuần tự (sequence diagram)"
     ],
     "correct": 1,
-    "explanation": "Mô hình thao tác thường được biểu diễn bởi Biểu đồ hoạt động hóa (liên kết mục tiêu với thao tác) và Biểu đồ hoạt động (UML Activity Diagram) để mô tả luồng thực thi của thao tác.",
+    "explanation": "Mô hình thao tác được biểu diễn bởi Biểu đồ hoạt động hóa (operationalization diagram) liên kết mục tiêu với thao tác, và Biểu đồ hoạt động (activity diagram) mô tả luồng thực thi của thao tác.",
     "priority": 10
   },
   {
@@ -802,7 +802,7 @@
       "Không"
     ],
     "correct": 0,
-    "explanation": "Trong mô hình hóa trạng thái, một 'Trạng thái' (State) trên biểu đồ đại diện cho một lớp các trạng thái tức thời (snapshots) tương đương nhau (ví dụ: trạng thái 'Chờ' bao gồm nhiều thời điểm cụ thể khác nhau).",
+    "explanation": "Đúng. Một trạng thái (State) trong máy trạng thái đại diện cho một lớp các trạng thái tức thời (snapshots) tương đương nhau, gom nhóm nhiều thời điểm cụ thể có đặc điểm giống nhau.",
     "priority": 10
   },
   {
@@ -826,7 +826,7 @@
       "Các sự kiện ngoài (external event) luôn được điều khiển (controlling) bởi tác từ khác với tác từ gần với máy trạng thái đang xét."
     ],
     "correct": 3,
-    "explanation": "Sự kiện ngoài (external event) theo định nghĩa là sự kiện do môi trường hoặc tác từ khác gây ra (kích thích). Nếu nó được điều khiển bởi chính tác từ đang xét (tác từ gần), thì nó phải là sự kiện trong (hành động).",
+    "explanation": "Phát biểu \"Các sự kiện ngoài luôn được điều khiển bởi tác tử khác\" là sai. Sự kiện ngoài (external event) là sự kiện từ môi trường bên ngoài kích hoạt, nhưng không nhất thiết \"luôn luôn\" do tác tử khác điều khiển trong mọi trường hợp.",
     "priority": 10
   },
   {
@@ -838,7 +838,7 @@
       "Biểu đồ tuần tự"
     ],
     "correct": 3,
-    "explanation": "Biểu đồ tuần tự (Sequence Diagram) mô tả sự tương tác giữa các thể hiện (đối tượng) cụ thể theo thời gian.",
+    "explanation": "Biểu đồ tuần tự (Sequence Diagram) được sử dụng để mô hình hóa hành vi ở cấp độ thể hiện, mô tả sự tương tác giữa các đối tượng cụ thể theo trình tự thời gian.",
     "priority": 10
   },
   {
@@ -850,7 +850,7 @@
       "Biểu đồ tuần tự"
     ],
     "correct": 1,
-    "explanation": "Biểu đồ tuần tự (Sequence Diagram) mô tả sự tương tác giữa các thể hiện (đối tượng) cụ thể theo thời gian.",
+    "explanation": "Biểu đồ lớp lĩnh vực (Domain Class Diagram) được sử dụng để mô hình hóa cấu trúc hệ thống ở cấp độ lớp, thể hiện các khái niệm và quan hệ giữa chúng.",
     "priority": 10
   },
   {
@@ -862,7 +862,7 @@
       "Là chuỗi các sự kiện tương tác giữa các thể hiện tác từ"
     ],
     "correct": 0,
-    "explanation": "Kịch bản tiêu cực được sử dụng để mô tả các tình huống ngoại lệ, lỗi, hành vi trái phép hoặc các trở ngại (obstacles) ngăn cản hệ thống đạt được mục tiêu.",
+    "explanation": "Kịch bản tiêu cực (negative scenario) được sử dụng để thể hiện các hành vi trái phép, các tình huống lỗi, hoặc các trở ngại cản trở việc đạt được mục tiêu của hệ thống.",
     "priority": 10
   },
   {
@@ -874,7 +874,7 @@
       "Không có phương án nào đúng"
     ],
     "correct": 2,
-    "explanation": "Sự kiện được kiểm soát/sinh ra bởi chính tác từ (hệ thống/đối tượng) đang được mô hình hóa được gọi là sự kiện trong (Internal Event) hoặc hành động.",
+    "explanation": "Tùy vào tình huống chuyển trạng thái, có thể là sự kiện trong (do chính tác tử sinh ra) hoặc sự kiện ngoài (nếu tác tử cũng có khả năng điều khiển sự kiện từ bên ngoài trong ngữ cảnh nhất định).",
     "priority": 10
   },
   {
@@ -886,7 +886,7 @@
       "Các biến trạng thái có thể được điều khiển bởi các tác từ khác nhau"
     ],
     "correct": 3,
-    "explanation": "Trong mô hình máy trạng thái của một đối tượng/tác từ cụ thể, các biến trạng thái thuộc về đối tượng đó và phải được kiểm soát bởi chính nó (nguyên tắc Single Writer). Việc các biến trạng thái của cùng một máy trạng thái bị điều khiển bởi các tác từ khác nhau (trực tiếp) là vi phạm tính đóng gói và nguyên tắc điều khiển.",
+    "explanation": "\"Các biến trạng thái có thể được điều khiển bởi các tác tử khác nhau\" là chưa chính xác trong ngữ cảnh trạng thái tương tranh của cùng một đối tượng. Các vùng tương tranh trong cùng một máy trạng thái phải thuộc cùng một tác tử.",
     "priority": 10
   }
 ]
