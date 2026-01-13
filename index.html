@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn tập Thu thập & Phân tích Yêu cầu</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useMemo } = React;
+
+        // --- Mock Data (Dữ liệu mặc định từ questions.json) ---
+        const INITIAL_QUESTIONS = [
+            {
+                id: 1,
+                question: "Chiều (dimension) nào được xem xét khi xác định nguồn gốc của các yêu cầu trong Kỹ nghệ yêu cầu?",
+                options: ["How (Thế nào?)", "What (Cái gì?)", "Why (Tại sao?)", "Who (Ai?)"],
+                correct: 3,
+                priority: 10,
+                explanation: "Chiều 'Who' xác định các bên liên quan (Stakeholders) và tác nhân, từ đó xác định nguồn gốc và người chịu trách nhiệm cho các yêu cầu."
+            },
+            {
+                id: 2,
+                question: "Trong kỹ nghệ yêu cầu, xem xét theo chiều 'WHY' (Tại sao) nhằm mục đích gì?",
+                options: ["Để xác định các dịch vụ phần mềm", "Để đạt được các mục tiêu kinh doanh và biện minh cho sự tồn tại của hệ thống", "Để xác định giao diện người dùng", "Để xác định kiến trúc hệ thống"],
+                correct: 1,
+                priority: 10,
+                explanation: "Chiều 'Why' tập trung vào mục tiêu chiến lược, giá trị kinh doanh và lý do hệ thống cần được xây dựng."
+            },
+            {
+                id: 3,
+                question: "Đâu là một khó khăn thường gặp khi xem xét theo chiều 'WHY'?",
+                options: ["Cần đánh giá các phương án khác nhau cho cùng một mục tiêu", "Viết mã nguồn quá phức tạp", "Khó khăn trong việc vẽ biểu đồ lớp", "Không có sự tham gia của lập trình viên"],
+                correct: 0,
+                priority: 10,
+                explanation: "Khó khăn của chiều 'Why' là phải so sánh, đánh giá nhiều phương án (alternatives) để chọn ra cách tốt nhất đạt được mục tiêu."
+            },
+            {
+                id: 4,
+                question: "Chiều 'WHAT' (Cái gì) trong kỹ nghệ yêu cầu hướng đến điểm nào sau đây?",
+                options: ["Xác định các bên liên quan (Stakeholders)", "Xác định các dịch vụ và chức năng phần mềm cần phát triển", "Xác định chi phí dự án", "Xác định ngôn ngữ lập trình sẽ sử dụng"],
+                correct: 1,
+                priority: 10,
+                explanation: "Chiều 'What' tập trung vào các yêu cầu chức năng, dịch vụ và các ràng buộc mà hệ thống phải đáp ứng."
+            },
+            {
+                id: 5,
+                question: "Biểu đồ nào được sử dụng để mô hình hóa hành vi hệ thống ở cấp độ thể hiện (instances), mô tả chuỗi thông điệp giữa các đối tượng?",
+                options: ["Biểu đồ trạng thái (State Diagram)", "Biểu đồ lớp (Class Diagram)", "Biểu đồ ca sử dụng (Use Case Diagram)", "Biểu đồ tuần tự (Sequence Diagram)"],
+                correct: 3,
+                priority: 10,
+                explanation: "Sequence Diagram (Biểu đồ tuần tự) thể hiện sự tương tác giữa các thể hiện (instances) theo trình tự thời gian thông qua các thông điệp."
+            },
+            {
+                id: 6,
+                question: "Biểu đồ nào thường được sử dụng để mô hình hóa hành vi vòng đời của một đối tượng (cấp độ lớp)?",
+                options: ["Biểu đồ tuần tự (Sequence Diagram)", "Biểu đồ trạng thái (State Diagram)", "Biểu đồ thành phần (Component Diagram)", "Biểu đồ triển khai (Deployment Diagram)"],
+                correct: 1,
+                priority: 10,
+                explanation: "State Diagram (Biểu đồ trạng thái) mô tả các trạng thái mà một đối tượng có thể trải qua trong vòng đời của nó và các sự kiện gây chuyển trạng thái."
+            },
+            {
+                id: 7,
+                question: "Kịch bản tiêu cực (Negative Scenario) dùng để làm gì?",
+                options: ["Mô tả các hành vi giúp đạt được mục tiêu nhanh nhất", "Để thể hiện các hành vi trái phép, ngoại lệ hoặc cản trở việc đạt mục tiêu", "Mô tả giao diện người dùng khi hệ thống tắt", "Chỉ dùng để kiểm thử hiệu năng"],
+                correct: 1,
+                priority: 10,
+                explanation: "Kịch bản tiêu cực mô tả các tình huống lỗi, ngoại lệ hoặc hành vi không mong muốn để đảm bảo hệ thống xử lý được các trường hợp này."
+            },
+            {
+                id: 8,
+                question: "Các sự kiện ngoài (external event) trong biểu đồ trạng thái thường được điều khiển bởi ai/cái gì?",
+                options: ["Bởi chính đối tượng đó", "Bởi một tác từ (actor) hoặc đối tượng khác bên ngoài máy trạng thái đang xét", "Luôn luôn bởi người quản trị hệ thống", "Bởi cơ sở dữ liệu"],
+                correct: 1,
+                priority: 10,
+                explanation: "Sự kiện ngoài (external event) xuất phát từ môi trường bên ngoài biên của đối tượng, thường do Actor hoặc đối tượng khác gửi đến."
+            },
+            {
+                id: 9,
+                question: "Khó khăn chính khi xem xét theo chiều 'WHAT' là gì?",
+                options: ["Giải quyết các xung đột mục tiêu và đảm bảo tính đầy đủ của dịch vụ", "Tìm kiếm nhân sự cho dự án", "Mua sắm thiết bị phần cứng", "Đào tạo người dùng cuối"],
+                correct: 0,
+                priority: 10,
+                explanation: "Khi xác định 'Cái gì', khó khăn là phải đảm bảo các yêu cầu đầy đủ, nhất quán và giải quyết các mâu thuẫn giữa các bên liên quan."
+            },
+            {
+                id: 10,
+                question: "Phát biểu nào sau đây là ĐÚNG về 'Sự kiện trong' (Internal Event)?",
+                options: ["Là sự kiện do người dùng bên ngoài kích hoạt", "Là sự kiện xảy ra bên trong hệ thống hoặc đối tượng đang xét, thường do đối tượng tự kích hoạt", "Là sự kiện liên quan đến thời tiết", "Là sự kiện khi mất kết nối mạng"],
+                correct: 1,
+                priority: 10,
+                explanation: "Sự kiện trong (Internal Event) phát sinh từ bên trong hệ thống hoặc do chính đối tượng tự gửi cho mình để chuyển đổi trạng thái."
+            },
+            {
+                id: 11,
+                question: "Đặc tả yêu cầu phần mềm (SRS) là kết quả chính của giai đoạn nào?",
+                options: ["Thiết kế hệ thống", "Kiểm thử chấp nhận", "Phân tích và đặc tả yêu cầu", "Bảo trì phần mềm"],
+                correct: 2,
+                priority: 10,
+                explanation: "SRS là tài liệu đầu ra quan trọng nhất sau khi hoàn thành việc thu thập, phân tích và đặc tả các yêu cầu."
+            },
+            {
+                id: 12,
+                question: "Trong mô hình Use Case, mối quan hệ 'Include' biểu thị điều gì?",
+                options: ["Hành vi của Use Case này có thể được mở rộng bởi Use Case khác", "Hành vi của Use Case này luôn bao gồm (bắt buộc) hành vi của Use Case khác", "Use Case này kế thừa từ Use Case khác", "Hai Use Case chạy song song"],
+                correct: 1,
+                priority: 10,
+                explanation: "Include thể hiện mối quan hệ bắt buộc: Use Case cơ sở luôn luôn gọi đến Use Case được include (thường dùng để tách chức năng dùng chung)."
+            },
+            {
+                id: 13,
+                question: "Kỹ thuật 'JAD' (Joint Application Development) còn được gọi là gì?",
+                options: ["Phỏng vấn nhóm", "Hội thảo yêu cầu (Requirements Workshop)", "Quan sát trực tiếp", "Tạo mẫu nhanh"],
+                correct: 1,
+                priority: 10,
+                explanation: "JAD là một kỹ thuật hội thảo tập trung (Workshop) nơi các bên liên quan cùng làm việc để xác định yêu cầu nhanh chóng."
+            },
+            {
+                id: 14,
+                question: "Yêu cầu nào sau đây là Yêu cầu phi chức năng (Non-functional)?",
+                options: ["Hệ thống phải cho phép tìm kiếm sản phẩm theo tên", "Hệ thống phải gửi email xác nhận sau khi đặt hàng", "Hệ thống phải đảm bảo thời gian phản hồi dưới 1 giây cho 90% yêu cầu", "Hệ thống phải có chức năng đăng xuất"],
+                correct: 2,
+                priority: 10,
+                explanation: "Đây là yêu cầu về Hiệu năng (Performance), thuộc nhóm phi chức năng. Các câu còn lại là chức năng cụ thể."
+            },
+            {
+                id: 15,
+                question: "Tính chất 'Khả năng kiểm tra' (Testable) của yêu cầu có nghĩa là gì?",
+                options: ["Yêu cầu phải ngắn gọn", "Phải có cách để xác định (đo lường/kiểm thử) xem hệ thống có đáp ứng yêu cầu đó hay không", "Yêu cầu phải được viết bằng tiếng Anh", "Yêu cầu phải được khách hàng ký duyệt"],
+                correct: 1,
+                priority: 10,
+                explanation: "Một yêu cầu tốt phải kiểm tra được (Testable), nghĩa là có tiêu chí rõ ràng để Tester xác nhận Pass/Fail."
+            }
+        ];
+
+        // --- Icons Components (Using Lucide via SVG) ---
+        const Icon = ({ name, size = 20, className = "" }) => {
+            React.useEffect(() => {
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
+            }, [name]);
+            return <i data-lucide={name} width={size} height={size} className={className}></i>;
+        };
+
+        // --- Main App Component ---
+        function App() {
+            // State
+            const [view, setView] = useState('menu'); // menu, quiz, result, manager, settings
+            const [questions, setQuestions] = useState([]);
+            const [currentQuiz, setCurrentQuiz] = useState([]);
+            const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+            const [userAnswers, setUserAnswers] = useState({}); // { questionId: optionIndex }
+            const [settings, setSettings] = useState({
+                musicUrl: "https://www.bensound.com/bensound-music/bensound-sunny.mp3", // Free placeholder
+                musicEnabled: false,
+                timeLimit: 10, // minutes
+            });
+            const [timeLeft, setTimeLeft] = useState(0);
+            const audioRef = useRef(null);
+            const timerRef = useRef(null);
+
+            // Load data from LocalStorage on mount
+            useEffect(() => {
+                const storedQuestions = localStorage.getItem('re_questions');
+                const storedSettings = localStorage.getItem('re_settings');
+
+                if (storedQuestions) {
+                    setQuestions(JSON.parse(storedQuestions));
+                } else {
+                    setQuestions(INITIAL_QUESTIONS);
+                    localStorage.setItem('re_questions', JSON.stringify(INITIAL_QUESTIONS));
+                }
+
+                if (storedSettings) {
+                    setSettings(JSON.parse(storedSettings));
+                }
+                
+                // Initialize Lucide icons
+                setTimeout(() => {
+                    if (window.lucide) window.lucide.createIcons();
+                }, 100);
+            }, []);
+
+            // Audio Control
+            useEffect(() => {
+                if (audioRef.current) {
+                    if (settings.musicEnabled && view === 'quiz') {
+                        audioRef.current.volume = 0.3;
+                        audioRef.current.play().catch(e => console.log("Audio play blocked until interaction"));
+                    } else {
+                        audioRef.current.pause();
+                    }
+                }
+            }, [settings.musicEnabled, view]);
+
+            // Save Settings
+            const saveSettings = (newSettings) => {
+                setSettings(newSettings);
+                localStorage.setItem('re_settings', JSON.stringify(newSettings));
+            };
+
+            // Start Quiz Logic
+            const startQuiz = () => {
+                let sorted = [...questions].sort((a, b) => b.priority - a.priority);
+                
+                const grouped = {};
+                sorted.forEach(q => {
+                    if (!grouped[q.priority]) grouped[q.priority] = [];
+                    grouped[q.priority].push(q);
+                });
+                
+                let finalPool = [];
+                Object.keys(grouped).sort((a, b) => b - a).forEach(p => {
+                    const shuffledGroup = grouped[p].sort(() => 0.5 - Math.random());
+                    finalPool = [...finalPool, ...shuffledGroup];
+                });
+
+                const quizSet = finalPool.slice(0, 20);
+                
+                setCurrentQuiz(quizSet);
+                setCurrentQuestionIndex(0);
+                setUserAnswers({});
+                setTimeLeft(settings.timeLimit * 60);
+                setView('quiz');
+            };
+
+            // Timer Logic
+            useEffect(() => {
+                if (view === 'quiz' && timeLeft > 0) {
+                    timerRef.current = setInterval(() => {
+                        setTimeLeft(prev => {
+                            if (prev <= 1) {
+                                clearInterval(timerRef.current);
+                                finishQuiz();
+                                return 0;
+                            }
+                            return prev - 1;
+                        });
+                    }, 1000);
+                } else {
+                    clearInterval(timerRef.current);
+                }
+                return () => clearInterval(timerRef.current);
+            }, [view, timeLeft]);
+
+            // Format Time
+            const formatTime = (seconds) => {
+                const m = Math.floor(seconds / 60);
+                const s = seconds % 60;
+                return `${m}:${s < 10 ? '0' : ''}${s}`;
+            };
+
+            // Answer Handler
+            const handleAnswer = (optionIndex) => {
+                const currentQ = currentQuiz[currentQuestionIndex];
+                setUserAnswers(prev => ({
+                    ...prev,
+                    [currentQ.id]: optionIndex
+                }));
+
+                if (currentQuestionIndex < currentQuiz.length - 1) {
+                    setCurrentQuestionIndex(prev => prev + 1);
+                } else {
+                    finishQuiz(optionIndex);
+                }
+            };
+
+            // Finish Quiz & Logic Priority Update
+            const finishQuiz = (lastAnswerIndex = null) => {
+                let finalAnswers = { ...userAnswers };
+                const currentQ = currentQuiz[currentQuestionIndex];
+                if (lastAnswerIndex !== null) {
+                    finalAnswers[currentQ.id] = lastAnswerIndex;
+                }
+                setUserAnswers(finalAnswers);
+
+                // Update Priorities
+                const updatedQuestions = questions.map(q => {
+                    if (finalAnswers.hasOwnProperty(q.id)) {
+                        const userAnswer = finalAnswers[q.id];
+                        let newPriority = q.priority;
+                        
+                        // Rule: Answered -> Priority - 1
+                        newPriority -= 1;
+
+                        // Rule: Wrong -> Priority + 1
+                        if (userAnswer !== q.correct) {
+                            newPriority += 1;
+                        }
+
+                        return { ...q, priority: newPriority };
+                    }
+                    return q;
+                });
+
+                setQuestions(updatedQuestions);
+                localStorage.setItem('re_questions', JSON.stringify(updatedQuestions));
+                setView('result');
+            };
+
+            // Calculate Score
+            const scoreData = useMemo(() => {
+                if (view !== 'result') return { score: 0, total: 0, correctCount: 0 };
+                let correctCount = 0;
+                currentQuiz.forEach(q => {
+                    if (userAnswers[q.id] === q.correct) {
+                        correctCount++;
+                    }
+                });
+                return {
+                    correctCount,
+                    total: currentQuiz.length,
+                    score: currentQuiz.length > 0 ? (correctCount / currentQuiz.length) * 10 : 0
+                };
+            }, [view, userAnswers, currentQuiz]);
+
+            // CRUD Handlers for Question Manager
+            const addQuestion = (newQ) => {
+                const updated = [...questions, { ...newQ, id: Date.now(), priority: 10 }];
+                setQuestions(updated);
+                localStorage.setItem('re_questions', JSON.stringify(updated));
+            };
+
+            const updateQuestion = (updatedQ) => {
+                const updated = questions.map(q => q.id === updatedQ.id ? updatedQ : q);
+                setQuestions(updated);
+                localStorage.setItem('re_questions', JSON.stringify(updated));
+            };
+
+            const deleteQuestion = (id) => {
+                if(confirm("Bạn có chắc muốn xóa câu hỏi này?")) {
+                    const updated = questions.filter(q => q.id !== id);
+                    setQuestions(updated);
+                    localStorage.setItem('re_questions', JSON.stringify(updated));
+                }
+            };
+
+            const importQuestions = (jsonString) => {
+                try {
+                    const parsed = JSON.parse(jsonString);
+                    if (Array.isArray(parsed)) {
+                        // Standardize structure
+                        const standardized = parsed.map((q, idx) => ({
+                            id: Date.now() + idx,
+                            question: q.question || "Empty Question",
+                            options: q.options || [],
+                            correct: q.correct || 0,
+                            priority: q.priority || 10,
+                            explanation: q.explanation || ""
+                        }));
+                        const merged = [...questions, ...standardized];
+                        setQuestions(merged);
+                        localStorage.setItem('re_questions', JSON.stringify(merged));
+                        alert(`Đã nhập thành công ${standardized.length} câu hỏi.`);
+                    } else {
+                        alert("File JSON phải là một mảng [] chứa các câu hỏi.");
+                    }
+                } catch (e) {
+                    alert("Lỗi định dạng JSON! Vui lòng kiểm tra lại file.");
+                    console.error(e);
+                }
+            };
+
+            // --- Sub-Components Render Functions ---
+
+            const renderMenu = () => (
+                <div className="flex flex-col items-center justify-center min-h-screen p-4 animate-fade-in text-center">
+                    <div className="mb-8 p-6 bg-white rounded-2xl shadow-xl w-full max-w-md">
+                        <div className="text-blue-600 mb-4 flex justify-center"><Icon name="book-open" size={64} /></div>
+                        <h1 className="text-3xl font-bold text-gray-800 mb-2">Ôn Tập Yêu Cầu</h1>
+                        <p className="text-gray-500 mb-6">Môn học: Thu thập và Phân tích yêu cầu</p>
+                        
+                        <div className="space-y-3">
+                            <button onClick={startQuiz} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+                                <Icon name="play" /> Bắt đầu ôn tập ({questions.length} câu)
+                            </button>
+                            <button onClick={() => setView('manager')} className="w-full bg-white border-2 border-gray-200 hover:bg-gray-50 text-gray-700 font-bold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+                                <Icon name="list" /> Quản lý câu hỏi
+                            </button>
+                            <button onClick={() => setView('settings')} className="w-full bg-white border-2 border-gray-200 hover:bg-gray-50 text-gray-700 font-bold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+                                <Icon name="settings" /> Cài đặt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+
+            const renderQuiz = () => {
+                const q = currentQuiz[currentQuestionIndex];
+                if (!q) return <div>Loading...</div>;
+
+                return (
+                    <div className="min-h-screen flex flex-col items-center p-4 bg-slate-100">
+                        {/* Header */}
+                        <div className="w-full max-w-2xl flex justify-between items-center mb-6 bg-white p-4 rounded-lg shadow-sm">
+                            <div className="flex items-center gap-2 text-gray-600">
+                                <Icon name="clock" size={20} />
+                                <span className={`font-mono font-bold text-lg ${timeLeft < 60 ? 'text-red-500' : ''}`}>
+                                    {formatTime(timeLeft)}
+                                </span>
+                            </div>
+                            <div className="text-gray-500 text-sm font-semibold">
+                                Câu {currentQuestionIndex + 1} / {currentQuiz.length}
+                            </div>
+                        </div>
+
+                        {/* Question Card */}
+                        <div className="w-full max-w-2xl bg-white rounded-2xl shadow-lg overflow-hidden animate-fade-in">
+                            <div className="bg-blue-600 p-6">
+                                <h2 className="text-xl md:text-2xl font-bold text-white leading-relaxed">
+                                    {q.question}
+                                </h2>
+                                <div className="mt-2 text-blue-200 text-xs">Priority: {q.priority}</div>
+                            </div>
+                            
+                            <div className="p-6 space-y-3">
+                                {q.options.map((opt, idx) => (
+                                    <button 
+                                        key={idx}
+                                        onClick={() => handleAnswer(idx)}
+                                        className="w-full text-left p-4 rounded-xl border-2 border-gray-100 hover:border-blue-500 hover:bg-blue-50 transition duration-200 flex items-start gap-3 group"
+                                    >
+                                        <div className="bg-gray-200 text-gray-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm group-hover:bg-blue-500 group-hover:text-white shrink-0">
+                                            {String.fromCharCode(65 + idx)}
+                                        </div>
+                                        <span className="text-gray-700 font-medium">{opt}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                );
+            };
+
+            const renderResult = () => {
+                const { score, total, correctCount } = scoreData;
+                return (
+                    <div className="min-h-screen flex flex-col items-center p-4 bg-slate-50">
+                        <div className="w-full max-w-4xl animate-fade-in">
+                            <div className="bg-white rounded-2xl shadow-xl p-8 mb-6 text-center">
+                                <div className="inline-block p-4 rounded-full bg-blue-100 text-blue-600 mb-4">
+                                    <Icon name="award" size={48} />
+                                </div>
+                                <h2 className="text-3xl font-bold text-gray-800 mb-2">Hoàn thành!</h2>
+                                <div className="text-5xl font-black text-blue-600 mb-2">{correctCount}/{total}</div>
+                                <p className="text-gray-500">Điểm số của bạn: {score.toFixed(1)} / 10</p>
+                                
+                                <button onClick={() => setView('menu')} className="mt-6 bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-8 rounded-full transition">
+                                    Về trang chủ
+                                </button>
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                                <div className="p-4 bg-gray-100 border-b font-bold text-gray-700 flex items-center gap-2">
+                                    <Icon name="eye" size={20} /> Xem lại đáp án
+                                </div>
+                                <div className="divide-y">
+                                    {currentQuiz.map((q, idx) => {
+                                        const userAns = userAnswers[q.id];
+                                        const isCorrect = userAns === q.correct;
+                                        return (
+                                            <div key={idx} className="p-6 hover:bg-gray-50">
+                                                <div className="flex items-start gap-3 mb-3">
+                                                    <div className={`mt-1 w-6 h-6 rounded-full flex items-center justify-center text-xs text-white shrink-0 ${isCorrect ? 'bg-green-500' : 'bg-red-500'}`}>
+                                                        {isCorrect ? <Icon name="check" size={14} /> : <Icon name="x" size={14} />}
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-semibold text-gray-800">{q.question}</p>
+                                                        <span className="text-xs text-gray-400">Độ ưu tiên mới: {q.priority - 1 + (isCorrect ? 0 : 1)}</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div className="space-y-2 pl-9">
+                                                    {q.options.map((opt, oIdx) => {
+                                                        let style = "p-2 rounded border ";
+                                                        if (oIdx === q.correct) style += "bg-green-100 border-green-300 text-green-800 font-medium";
+                                                        else if (oIdx === userAns && !isCorrect) style += "bg-red-100 border-red-300 text-red-800";
+                                                        else style += "bg-white border-gray-200 text-gray-500 opacity-70";
+                                                        
+                                                        return (
+                                                            <div key={oIdx} className={style}>
+                                                                {String.fromCharCode(65 + oIdx)}. {opt}
+                                                                {oIdx === q.correct && <span className="float-right text-xs bg-green-200 px-2 py-0.5 rounded text-green-800 font-bold">ĐÚNG</span>}
+                                                                {oIdx === userAns && !isCorrect && <span className="float-right text-xs bg-red-200 px-2 py-0.5 rounded text-red-800 font-bold">BẠN CHỌN</span>}
+                                                            </div>
+                                                        )
+                                                    })}
+                                                    {q.explanation && (
+                                                        <div className="mt-3 p-3 bg-blue-50 text-blue-800 rounded-lg text-sm border-l-4 border-blue-500 flex gap-2">
+                                                            <Icon name="info" size={16} className="mt-0.5 shrink-0" />
+                                                            <div>
+                                                                <strong>Giải thích:</strong> {q.explanation}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            };
+
+            const QuestionManager = () => {
+                const [isEditing, setIsEditing] = useState(false);
+                const [editData, setEditData] = useState(null); // null = add mode
+                const [importText, setImportText] = useState("");
+                const [showImport, setShowImport] = useState(false);
+                const fileInputRef = useRef(null);
+
+                // Local state for the form
+                const [formData, setFormData] = useState({
+                    question: "",
+                    options: ["", "", "", ""],
+                    correct: 0,
+                    explanation: ""
+                });
+
+                const resetForm = () => {
+                    setFormData({ question: "", options: ["", "", "", ""], correct: 0, explanation: "" });
+                    setIsEditing(false);
+                    setEditData(null);
+                };
+
+                const handleEdit = (q) => {
+                    setFormData({
+                        question: q.question,
+                        options: [...q.options],
+                        correct: q.correct,
+                        explanation: q.explanation || ""
+                    });
+                    setEditData(q);
+                    setIsEditing(true);
+                };
+
+                const handleSave = () => {
+                    if (!formData.question.trim()) return alert("Vui lòng nhập câu hỏi");
+                    if (formData.options.some(o => !o.trim())) return alert("Vui lòng nhập đầy đủ các đáp án");
+
+                    if (editData) {
+                        updateQuestion({ ...editData, ...formData });
+                    } else {
+                        addQuestion(formData);
+                    }
+                    resetForm();
+                };
+
+                const handleOptionChange = (idx, val) => {
+                    const newOps = [...formData.options];
+                    newOps[idx] = val;
+                    setFormData({ ...formData, options: newOps });
+                };
+
+                const addOptionSlot = () => {
+                    setFormData(prev => ({ ...prev, options: [...prev.options, ""] }));
+                };
+
+                const removeOptionSlot = (idx) => {
+                    if(formData.options.length <= 2) return;
+                    const newOps = formData.options.filter((_, i) => i !== idx);
+                    // Adjust correct index if needed
+                    let newCorrect = formData.correct;
+                    if (idx < formData.correct) newCorrect--;
+                    if (idx === formData.correct) newCorrect = 0;
+                    
+                    setFormData({ ...formData, options: newOps, correct: newCorrect });
+                };
+
+                // File Upload Handler
+                const handleFileChange = (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            const text = event.target.result;
+                            setImportText(text); // Auto-fill the textarea
+                        };
+                        reader.readAsText(file);
+                    }
+                };
+
+                // Thêm tính năng xóa tất cả
+                const deleteAllQuestions = () => {
+                    if(confirm("CẢNH BÁO QUAN TRỌNG:\n\nBạn có chắc chắn muốn XÓA TOÀN BỘ ngân hàng câu hỏi không?\nHành động này không thể hoàn tác!")) {
+                        setQuestions([]);
+                        localStorage.setItem('re_questions', JSON.stringify([]));
+                        alert("Đã xóa tất cả câu hỏi.");
+                        resetForm();
+                    }
+                };
+
+                return (
+                    <div className="min-h-screen bg-gray-50 p-4">
+                        <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg min-h-[80vh] flex flex-col">
+                            <div className="p-4 border-b flex justify-between items-center bg-gray-800 text-white rounded-t-xl">
+                                <h2 className="text-xl font-bold flex items-center gap-2">
+                                    <Icon name="database" /> Ngân hàng câu hỏi ({questions.length})
+                                </h2>
+                                <button onClick={() => setView('menu')} className="text-sm hover:text-gray-300 flex items-center gap-1">
+                                    <Icon name="arrow-left" size={16} /> Quay lại
+                                </button>
+                            </div>
+
+                            <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+                                {/* Left: List */}
+                                <div className="w-full md:w-1/3 border-r overflow-y-auto h-[60vh] md:h-auto bg-gray-50">
+                                    <div className="p-2 sticky top-0 bg-gray-50 z-10 border-b">
+                                        <button onClick={resetForm} className="w-full bg-blue-600 text-white py-2 rounded shadow hover:bg-blue-700 font-medium">
+                                            + Tạo câu hỏi mới
+                                        </button>
+                                        <button onClick={() => setShowImport(!showImport)} className="w-full mt-2 bg-green-600 text-white py-2 rounded shadow hover:bg-green-700 font-medium text-sm">
+                                            {showImport ? 'Ẩn Import' : 'Import JSON'}
+                                        </button>
+                                        
+                                        {/* Nút xóa tất cả mới được thêm */}
+                                        <button onClick={deleteAllQuestions} className="w-full mt-2 bg-red-500 hover:bg-red-600 text-white py-2 rounded shadow font-medium text-sm flex items-center justify-center gap-1">
+                                            <Icon name="trash-2" size={16} /> Xóa tất cả
+                                        </button>
+
+                                        {showImport && (
+                                            <div className="mt-2 p-3 bg-white border rounded shadow-inner">
+                                                
+                                                <div className="mb-3 border-b pb-2">
+                                                    <label className="block text-xs font-bold text-gray-600 mb-1">Cách 1: Chọn file JSON từ máy</label>
+                                                    <input 
+                                                        type="file" 
+                                                        accept=".json" 
+                                                        ref={fileInputRef}
+                                                        onChange={handleFileChange} 
+                                                        className="text-xs w-full text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" 
+                                                    />
+                                                </div>
+                                                
+                                                <div className="mb-2">
+                                                    <label className="block text-xs font-bold text-gray-600 mb-1">Cách 2: Dán nội dung JSON</label>
+                                                    <textarea 
+                                                        className="w-full text-xs p-2 border rounded h-24 focus:ring-2 focus:ring-green-500 outline-none font-mono" 
+                                                        placeholder='[{"question":"...", "options":["..."], "correct":0}]'
+                                                        value={importText}
+                                                        onChange={e => setImportText(e.target.value)}
+                                                    />
+                                                </div>
+
+                                                <button onClick={() => importQuestions(importText)} className="mt-1 bg-green-600 hover:bg-green-700 text-white text-xs px-2 py-2 rounded w-full font-bold transition">
+                                                    Thực thi Import
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="divide-y">
+                                        {questions.map(q => (
+                                            <div key={q.id} onClick={() => handleEdit(q)} 
+                                                className={`p-4 cursor-pointer hover:bg-blue-50 transition ${editData?.id === q.id ? 'bg-blue-100 border-l-4 border-blue-600' : ''}`}>
+                                                <p className="text-sm font-medium text-gray-800 line-clamp-2">{q.question}</p>
+                                                <div className="flex justify-between mt-1 text-xs text-gray-400">
+                                                    <span>Pri: {q.priority}</span>
+                                                    <span className="text-blue-600 hover:underline" onClick={(e) => { e.stopPropagation(); deleteQuestion(q.id); }}>Xóa</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Right: Form */}
+                                <div className="w-full md:w-2/3 p-6 overflow-y-auto">
+                                    <h3 className="text-lg font-bold text-gray-700 mb-4 border-b pb-2">
+                                        {editData ? 'Chỉnh sửa câu hỏi' : 'Thêm câu hỏi mới'}
+                                    </h3>
+                                    
+                                    <div className="space-y-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-1">Nội dung câu hỏi</label>
+                                            <textarea 
+                                                value={formData.question}
+                                                onChange={e => setFormData({...formData, question: e.target.value})}
+                                                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                                                rows="3"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-1">Giải thích đáp án (tùy chọn)</label>
+                                            <textarea 
+                                                value={formData.explanation}
+                                                onChange={e => setFormData({...formData, explanation: e.target.value})}
+                                                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-yellow-50"
+                                                rows="2"
+                                                placeholder="Nhập giải thích tại sao đáp án này đúng..."
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 mb-2">Các đáp án (Tích chọn đáp án đúng)</label>
+                                            <div className="space-y-2">
+                                                {formData.options.map((opt, idx) => (
+                                                    <div key={idx} className="flex items-center gap-2">
+                                                        <input 
+                                                            type="radio" 
+                                                            name="correctOpt" 
+                                                            checked={formData.correct === idx} 
+                                                            onChange={() => setFormData({...formData, correct: idx})}
+                                                            className="w-4 h-4 text-blue-600 cursor-pointer"
+                                                        />
+                                                        <input 
+                                                            type="text" 
+                                                            value={opt}
+                                                            onChange={(e) => handleOptionChange(idx, e.target.value)}
+                                                            className={`flex-1 p-2 border rounded focus:outline-none ${formData.correct === idx ? 'border-green-500 bg-green-50' : ''}`}
+                                                            placeholder={`Đáp án ${idx + 1}`}
+                                                        />
+                                                        <button onClick={() => removeOptionSlot(idx)} className="text-gray-400 hover:text-red-500">
+                                                            <Icon name="trash-2" size={16} />
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <button onClick={addOptionSlot} className="mt-2 text-sm text-blue-600 hover:underline flex items-center gap-1">
+                                                <Icon name="plus-circle" size={14} /> Thêm đáp án
+                                            </button>
+                                        </div>
+
+                                        <div className="pt-4 flex gap-3">
+                                            <button onClick={handleSave} className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-bold transition">
+                                                Lưu câu hỏi
+                                            </button>
+                                            {editData && (
+                                                <button onClick={resetForm} className="bg-gray-200 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-300 font-bold transition">
+                                                    Hủy
+                                                </button>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            };
+
+            const Settings = () => (
+                <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
+                    <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md animate-fade-in">
+                        <div className="flex justify-between items-center mb-6">
+                            <h2 className="text-2xl font-bold text-gray-800">Cài đặt</h2>
+                            <button onClick={() => setView('menu')}><Icon name="x" /></button>
+                        </div>
+                        
+                        <div className="space-y-6">
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">Thời gian làm bài (phút)</label>
+                                <input 
+                                    type="number" 
+                                    value={settings.timeLimit}
+                                    onChange={(e) => saveSettings({...settings, timeLimit: parseInt(e.target.value) || 1})}
+                                    className="w-full p-3 border rounded-lg"
+                                    min="1"
+                                />
+                            </div>
+
+                            <div className="flex items-center justify-between">
+                                <span className="text-gray-700 font-semibold">Phát nhạc nền</span>
+                                <button 
+                                    onClick={() => saveSettings({...settings, musicEnabled: !settings.musicEnabled})}
+                                    className={`w-14 h-8 rounded-full p-1 transition duration-300 ${settings.musicEnabled ? 'bg-blue-600' : 'bg-gray-300'}`}
+                                >
+                                    <div className={`bg-white w-6 h-6 rounded-full shadow-md transform transition duration-300 ${settings.musicEnabled ? 'translate-x-6' : ''}`}></div>
+                                </button>
+                            </div>
+
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">Link nhạc (MP3 URL)</label>
+                                <input 
+                                    type="text" 
+                                    value={settings.musicUrl}
+                                    onChange={(e) => saveSettings({...settings, musicUrl: e.target.value})}
+                                    className="w-full p-3 border rounded-lg text-sm"
+                                    placeholder="https://example.com/music.mp3"
+                                />
+                                <p className="text-xs text-gray-400 mt-1">Lưu ý: Một số trình duyệt chặn tự phát nhạc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+
+            // --- Root Render Logic ---
+            return (
+                <div>
+                    <audio ref={audioRef} src={settings.musicUrl} loop />
+                    
+                    {view === 'menu' && renderMenu()}
+                    {view === 'quiz' && renderQuiz()}
+                    {view === 'result' && renderResult()}
+                    {view === 'manager' && <QuestionManager />}
+                    {view === 'settings' && <Settings />}
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
